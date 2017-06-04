@@ -1,0 +1,83 @@
+    <nav class="navbar navbar-inverse center">
+      <div class="container navbar-inner">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#" ng-show="!ctrl.showInput" ng-click="ctrl.showInput=true">#{{ctrl.topic}}</a>
+          <div class="navbar-input" ng-show="ctrl.showInput"><input placeholder="Enter topic of interest" ng-model="ctrl.newRoom">
+          <button class="btn btn-sm btn-primary" ng-click="ctrl.switchRoom()"><i class="fa fa-paper-plane"></i></button>
+          <small class="btn btn-sm btn-default" ng-click="ctrl.cancel()"><i class="fa fa-times"></i></small>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="jumbotron">
+      <div class="container" style="display:table;height:100%;">
+        <div style="display:table-cell;vertical-align: middle;">
+          <div class="tagline">
+            <h1 ng-style="ctrl.pattern">#{{ctrl.topic}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row row1">
+        <div class="col-md-12">
+          <div id="share" class="box3" ng-style="ctrl.patternColor">
+            <div class="box1" ng-style="ctrl.pattern">
+              <div class="counter-wrapper" ng-show="ctrl.featured.length>0">
+                <div class="incremental-counter-wrapper">
+                  <div class="incremental-counter">
+                    <div class="num" ng-repeat="val in ctrl.count track by $index">{{val}}</div>
+                  </div>
+                </div>
+                <p>位已經分享他們對{{ctrl.topic}}的意見<br />
+                people have shared their opinion on {{ctrl.topic}}</p>
+              </div>
+              <div ng-show="ctrl.featured.length==0">
+                <p>成爲第一個留言者<br />
+                Be the first to voice your opinion</p>
+              </div>
+              <img class="pen-svg" src="pen.svg" ng-show="ctrl.featured.length==0">
+            </div>
+            <div class="box3-content">
+              <div class="thank-you-msg-wrapper" ng-show="ctrl.submitted">
+                <div class="thank-you-msg">
+                  <p>多謝你的支持！你的留言將於檢閱後發佈。</p>
+                  <p>Thank you for your support! Your submission will be posted after processing.</p>
+                </div>
+              </div>
+              <form id="story-form" ng-submit="ctrl.addComment()" ng-show="!ctrl.submitted">
+                <input ng-model="ctrl.userInput.name" id="story-form-name" type="text" placeholder="名字 Name" required />
+                <input ng-model="ctrl.userInput.email" id="story-form-email" type="email" placeholder="電郵地址 Email address" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" />
+                <textarea ng-model="ctrl.userInput.content" id="story-form-message" rows="5" placeholder="留言 Message" required></textarea>
+                <p>由此繼續，即表示你已細閱並同意細則及條款，詳情按<a href="/tnc.html" target="_blank">此</a>。</p>
+                <p>By proceeding, you are agreeing to the terms and conditions <a href="/tnc.html" target="_blank">here</a>.</p>
+                <button id="submit-button" type="submit" ng-style="ctrl.patternColorDarker">Submit</button>
+                <p>*{{ctrl.name}} 保留最終決定權公開和刪除參加者提交之資料。</p>
+                <p>{{ctrl.name}} reserves the right to post and delete any submitted information.</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row row2" ng-show="ctrl.featured.length>0">
+        <div class="col-md-12 box4" ng-style="ctrl.patternColor">
+          <h1>您的意見 Featured</h1>
+          <div class="col-md-12">
+            <div class="grid">
+              <div class="grid-item" ng-repeat="item in ctrl.featured" ng-init="ctrl.fire()"><div class="story-wrapper"><div class="story-name">{{item.name}}</div><div class="story-message">{{item.content}}</div></div></div>
+              </div>
+            </div>      
+          </div>
+      </div>
+      <footer>
+        <p>&copy; 2017 Topic Wall</p>
+        <p><a href="mailto:topicwall@gmail.com">Contact</a> | <a href="">Facebook Page</a></p>
+      </footer>
+    </div> <!-- /container -->
+
+    <div id="share-story" class="visible-xs visible-sm" ng-style="ctrl.patternColorDarker">
+      <a href="#share">分享你的意見<br />Provide your opinion</a>
+      </div>
+    </div>

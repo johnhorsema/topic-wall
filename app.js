@@ -2,13 +2,21 @@ var app = angular.module("topicWall", ['ngRoute', 'firebase']);
 app
     .config(['$routeProvider','$locationProvider',function($routeProvider, $locationProvider) {
         $routeProvider
+        .when('/tnc', {
+            templateUrl: 'tnc.html',
+            controller: null
+        })
+        .when('/privacy', {
+            templateUrl: 'privacy.html',
+            controller: null
+        })
         .when('/', {
             templateUrl: 'home.html',
-            controller: 'counterCtrl as ctrl',
+            controller: 'counterCtrl as ctrl'
         })
         .when('/:room', {
             templateUrl: 'home.html',
-            controller: 'counterCtrl as ctrl',
+            controller: 'counterCtrl as ctrl'
         });
         $locationProvider.html5Mode(true);
     }])

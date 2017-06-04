@@ -52,7 +52,7 @@
                 <input ng-model="ctrl.userInput.name" id="story-form-name" type="text" placeholder="名字 Name" required />
                 <input ng-model="ctrl.userInput.email" id="story-form-email" type="email" placeholder="電郵地址 Email address" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" />
                 <textarea ng-model="ctrl.userInput.content" id="story-form-message" rows="5" placeholder="留言 Message" required></textarea>
-                <p>由此繼續，即表示你已細閱並同意細則及條款，詳情按<a href="/tnc.html" target="_blank">此</a>。</p>
+                <p>由此繼續，即表示你已細閱並同意細則及條款，詳情按<a href="/tnc" target="_blank">此</a>。</p>
                 <p>By proceeding, you are agreeing to the terms and conditions <a href="/tnc.html" target="_blank">here</a>.</p>
                 <button id="submit-button" type="submit" ng-style="ctrl.patternColorDarker">Submit</button>
                 <p>*{{ctrl.name}} 保留最終決定權公開和刪除參加者提交之資料。</p>
@@ -74,7 +74,13 @@
       </div>
       <footer>
         <p>&copy; 2017 Topic Wall</p>
-        <p><a href="mailto:topicwall@gmail.com">Contact</a> | <a href="">Facebook Page</a></p>
+        <p>
+          <a target="_blank" href="/tnc">Terms & Conditions</a>
+           | 
+          <a target="_blank" href="/privacy">Privacy</a>
+           | 
+          <a href="https://www.facebook.com/141567676389816/photos/a.141571133056137.1073741828.141567676389816/141570916389492/?type=1&theater">Facebook Page</a>
+        </p>
       </footer>
     </div> <!-- /container -->
 
